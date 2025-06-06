@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+        {% load static %}
+
+    {% block content %}
+
+        <section id="detail-produit" class="section-p1">
+            <div class="row-image">
+                <img src="{{ single_product.images.url}}" width="100%" id="image-principal" alt="image de detail du produit">
+                <div class="gallerie-image-groupe">
+                    <div class="gallerie-image-col">
+                        <img src="{% static 'img/products/f1.jpg' %} " width="100%" class="min-image-gallerie" alt="image de gallerie">
+                    </div>
+                    <div class="gallerie-image-col">
+                        <img src="{% static 'img/products/f2.jpg' %}" width="100%" class="min-image-gallerie" alt="image de gallerie">
+                    </div>
+                    <div class="gallerie-image-col">
+                        <img src="{% static 'img/products/f3.jpg' %}" width="100%" class="min-image-gallerie" alt="image de gallerie">
+                    </div>
+                    <div class="gallerie-image-col">
+                        <img src="{% static 'img/products/f4.jpg' %}" width="100%" class="min-image-gallerie" alt="image de gallerie">
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row-texte">
+                <h5>Catégorie : {{single_product.category}}</h5>
+                <h2>{{ single_product.product_name }}</h2>
+                <h4 class="prix"> {{single_product.price}} FCFA </h4>
+                <select name="" id="">
+                    <option> Selectionnez votre choix</option>
+                    <option> XL</option>
+                    <option> S</option>
+                    <option> L</option>
+                    <option> XXL</option>
+                    <option> M</option>
+                </select>
+                <input type="number" value="1">
+
+                {% if single_product.stock <= 0 %}
+                  <h6>Produit indisponible</h6>
+                  {% else %}
+                <button class="normal">Ajouter au panier</button>
+                {% endif %}
+                <h4>Description</h4>
+                <span>{{ single_product.description }}</span>
+            </div>
+        </section> <br> <br> <br>
+
+        <section id="P1" class="section-p1">
+            <h2>Produits similaires</h2>
+            <div class="pro-container">
+                <div class="pro">
+                    <img src="{% static 'img/products/f1.jpg' %}" alt="produit1">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 25000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+            </div>
+        </section>
+
+ 
+        <script>
+            var ImagePrincipal = document.getElementById("image-principal");
+            var GallerieTmage = document.getElementsByClassName("min-image-gallerie");
+
+            GallerieTmage[0].onclick = function(){
+                ImagePrincipal.src = GallerieTmage[0].src;
+            }
+            GallerieTmage[1].onclick = function(){
+                ImagePrincipal.src = GallerieTmage[1].src;
+            }
+            GallerieTmage[2].onclick = function(){
+                ImagePrincipal.src = GallerieTmage[2].src;
+            }
+            GallerieTmage[3].onclick = function(){
+                ImagePrincipal.src = GallerieTmage[3].src;
+            }
+        </script>
+
+
+
+        <script src="{% static 'js/script.js' %}"></script>
+
+  {% endblock %}

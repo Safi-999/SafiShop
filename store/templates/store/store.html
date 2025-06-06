@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+        {% load static %}
+
+    {% block content %}
+
+        <section id="tete-de-page-shop">
+            <h2>Bienvenu(s) dans SafiShop</h2>
+            <p>Vous aurez une <span>réduction de -60% sur tous nos produits</span> </p>
+        </section>
+
+        <section id="catlist" class="section-p1">
+            <a href="{% url 'store' %}" id="allcat" class="page-active" >Tous les catégories</a>
+                {% for category in links %}
+                    <a href="{{ category.get_url }}">{{ category.category_name }}</a>
+                {% endfor %}
+            
+        </section>
+
+
+
+        <section id="P1" class="section-p1">
+            <h2>Nos produits</h2>
+            <h6 style="margin-top: 10px;">{{ product_count }} article(s) Trouvé(s)</h6>
+            
+            <div class="pro-container">
+
+                {% for product in products %}
+
+                <div class="pro">
+                    <a href="{{ product.get_url }}">
+                        <img src=" {{product.images.url}} " alt="produit1">
+                    <div class="description">
+                        
+                        <h5 class="titre"> {{product.product_name}} </h5>
+                        <span>adidas</span>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> {{product.price}} FCFA </h4>
+                    </a>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+               {% endfor %}
+            
+            </div>
+        </section>
+
+        <section id="pagination" class="section-p1">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
+        </section>
+
+
+        <script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

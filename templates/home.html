@@ -1,0 +1,228 @@
+
+        {% extends 'base.html' %}
+
+        {% load static %}
+        
+
+
+        {% block content %}
+
+        <section id="present">
+            <h3>Bienvenus chez Safi-Shop</h4>
+            <h2>Nos prix sont bon</h2>
+            <h1>Nos produits sont meilleurs</h1>
+            <p>Vous aurez une <span>réduction de -60%</span> </p>
+            <a href="{% url 'store' %}"><button>Achetez !</button></a>
+            
+
+        </section>
+
+{% include 'includes/feature.html' %}
+
+        <section id="P1" class="section-p1">
+            <h2>Nos meilleurs produits</h2>
+            <p>La collection de nos meilleurs produits</p>
+
+            <div class="pro-container">
+            {% for product in products %}
+              <div class="pro">
+                    <a href="{{ product.get_url }}">
+                        <img src=" {{product.images.url}} " alt="produit1">
+                    <div class="description">
+                        
+                        <h5 class="titre"> {{product.product_name}} </h5>
+                        <span>adidas</span>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> {{product.price}} FCFA </h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+
+        <section id="banniere" class="section-m1">
+            <h4>Spécial Promo</h4>
+            <h2>OBTENEZ UNE <span>REDUCTION DE 70%</span> SUR TOUS NOS PRODUITS</h2>
+            <button class="normal">Explore !</button>
+        </section>
+
+        <section id="P1" class="section-p1">
+            <h2>Nouveaux produits</h2>
+            <p>La collection de nos meilleurs nouveaux produits</p>
+            <div class="pro-container">
+                <div class="pro">
+                    <img src="{% static 'img/products/n1.jpg' %}" alt="produit1">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 25000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n2.jpg' %}" alt="produit2">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 20000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n3.jpg' %}" alt="produit3">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 25000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n4.jpg' %}" alt="produit4">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 25000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n5.jpg' %}" alt="produit5">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 20000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static '' %}img/products/n6.jpg" alt="produit6">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 30000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n7.jpg' %}" alt="produit7">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 25000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <div class="pro">
+                    <img src="{% static 'img/products/n8.jp' %}g" alt="produit8">
+                    <div class="description">
+                        <span>adidas</span>
+                        <h5 class="titre">Cartoon astronaut T-Shirt</h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="prix"> 15000 Fcfa</h4>
+                    </div>
+                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sm-banniere" class="section-p1 sm-banniere">
+            <div class="banniere-box">
+                <h4>Waa lii neexul ?</h4>
+                <h2>Achetez 1 et obtenez 2</h2>
+                <span>Achetez maintenant et on vous donne un proudit gratuit</span>
+                <button class="btn-blanc">Apprenez plus</button>
+            </div>
+            <div class="banniere-box banniere-box2">
+                <h4>MDD Cadeaux</h4>
+                <h2>Un prix, 10 produits</h2>
+                <span>Achetez maintenant et on vous donne dix proudits gratuits</span>
+                <button class="btn-blanc">Collection</button>
+            </div>
+        </section>
+
+        <section id="banniere3">
+            <div class="banniere-box">
+                <h2>T-Shirt</h2>
+                <h3>Nouvelles tendences</h3>
+            </div>
+            <div class="banniere-box banniere-box2">
+                <h2>Pour les couples</h2>
+                <h3>Nouvelles tendences</h3>
+            </div>
+            <div class="banniere-box banniere-box3">
+                <h2>Beauté</h2>
+                <h3>Nouvelles tendences</h3>
+            </div>
+        </section>
+        
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+
+</html>
+
+        {% endblock %}

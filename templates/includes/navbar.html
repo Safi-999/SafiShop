@@ -1,0 +1,33 @@
+        {% load static %}
+        
+        <section id="header">
+            <a href="{% url 'home' %}"><img src="{% static 'img/logo1.png' %}" class="logo" alt="logo"></a>
+            <div class="BDR">
+                <input type="search" placeholder="Entrer votre email">
+                <button class="btn-recherche"><i class="fal fa-search"></i></button>
+            </div>
+            
+            <div >
+                <ul id="navbar">
+                    <li><a href="{% url 'home' %}" class="">Accueil</a></li>
+                    <li><a href="{% url 'store' %}">Boutique</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">A propos de nous</a></li>
+                    <li id="shopsupp" class="cart-icon"><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                    <a href="#" id="fermer"><i class="fas fa-times"></i></a>
+                </ul>
+
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="fa fa-shopping-bag"></i></a>
+                <i id="bar" class="fas fa-outdent"> </i>
+            </div>
+        </section>
+
+        <section id="BDR">
+            <div class="BDR">
+                <input type="search" placeholder="Entrer votre email">
+                <button class="btn-recherche"><i class="fal fa-search"></i></button>
+            </div>
+        </section>
