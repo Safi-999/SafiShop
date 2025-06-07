@@ -41,7 +41,7 @@
                 {% if single_product.stock <= 0 %}
                   <h6>Produit indisponible</h6>
                   {% else %}
-                <button class="normal">Ajouter au panier</button>
+                    <a href="{% url 'add_cart' single_product.id %}"><button class="normal">Ajouter au panier</button></a>
                 {% endif %}
                 <h4>Description</h4>
                 <span>{{ single_product.description }}</span>
