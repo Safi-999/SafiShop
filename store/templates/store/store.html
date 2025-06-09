@@ -4,57 +4,97 @@
 
     {% block content %}
 
-        <section id="tete-de-page-shop">
-            <h2>Bienvenu(s) dans SafiShop</h2>
-            <p>Vous aurez une <span>réduction de -60% sur tous nos produits</span> </p>
-        </section>
 
-        <section id="catlist" class="section-p1">
-            <a href="{% url 'store' %}" id="allcat" class="page-active" >Tous les catégories</a>
-                {% for category in links %}
-                    <a href="{{ category.get_url }}">{{ category.category_name }}</a>
-                {% endfor %}
-            
-        </section>
+        {% if 'search' in request.path %}
+            <h3  id="P1" class="section-p1">Resultat de la recherche de <span style="color: rgba(108, 104, 104, 0.845);">({{ keyword }})</span></h3>
 
+        {% else %}
 
+            <section id="tete-de-page-shop">
+                <h2>Bienvenu(s) dans SafiShop</h2>
+                <p>Vous aurez une <span>réduction de -60% sur tous nos produits</span> </p>
+            </section>
 
+            <section id="catlist" class="section-p1">
+                <a href="{% url 'store' %}" id="allcat" class="page-active" >Tous les catégories</a>
+                    {% for category in links %}
+                        <a href="{{ category.get_url }}">{{ category.category_name }}</a>
+                    {% endfor %}
+                
+            </section>
+        {% endif %}
+
+        
         <section id="P1" class="section-p1">
-            <h2>Nos produits</h2>
+            {% if 'search' in request.path %}
+            
+            {% else %}
+                <h2>Nos produits</h2>
+            {% endif %}
             <h6 style="margin-top: 10px;">{{ product_count }} article(s) Trouvé(s)</h6>
             
             <div class="pro-container">
 
+                {% if products %}
+
                 {% for product in products %}
 
-                <div class="pro">
-                    <a href="{{ product.get_url }}">
-                        <img src=" {{product.images.url}} " alt="produit1">
-                    <div class="description">
-                        
-                        <h5 class="titre"> {{product.product_name}} </h5>
-                        <span>adidas</span>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                    <div class="pro">
+                        <a href="{{ product.get_url }}">
+                            <img src=" {{product.images.url}} " alt="produit1">
+                        <div class="description">
+                            
+                            <h5 class="titre"> {{product.product_name}} </h5>
+                            <span>adidas</span>
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4 class="prix"> {{product.price}} FCFA </h4>
+                        </a>
                         </div>
-                        <h4 class="prix"> {{product.price}} FCFA </h4>
-                    </a>
+                        <a class="pro_voir_det" href="{{ product.get_url }}"><button class="normal">Voir detail <i style="padding-left: 10px;" class="fas fa-eye"></i></button></i></a>
                     </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
+                    
                {% endfor %}
+               {% else %}
+               <div class="article_no_found_div">
+                
+                    <h2 class="article_no_found">
+                        Aucun article n'à été trouvé. Réessayer à nouveau. 
+                    </h2>
+               </div>
+               {% endif %}
             
             </div>
         </section>
 
         <section id="pagination" class="section-p1">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
+            {% if products.has_other_pages %}
+
+                {% if products.has_previous %}
+                    <a class="pagination_preced" href="?page={{products.previous_page_number}}"><i class="fal fa-long-arrow-alt-left"> <span style="padding-left: 10px;">Pécédant</span> </i></a>
+                {% else %}
+                    <span id="btn_desactive" href="#"><i class="fal fa-long-arrow-alt-left"><span style="padding-left: 10px;">Précédant</span> </i></span>
+                {% endif %}
+
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <a href="?page={{i}}"><span class="pagination_numb_active">{{i}}</span></a>
+                    {% else %}
+                        <a class="pagination_numb_desactive" href="?page={{i}}">{{i}}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if products.has_next %}
+                    <a class="pagination_next" href="?page={{products.next_page_number}}"><span style="padding-right: 10px;">Suivant</span><i class="fal fa-long-arrow-alt-right"></i></a>
+                {% else %}
+                    <span id ="btn_desactive"> <span style="padding-right: 10px;">Suivant</span><i class="fal fa-long-arrow-alt-right"></i></a>
+                {% endif %}
+            {% endif %}
         </section>
 
 

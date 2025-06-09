@@ -3,8 +3,10 @@
         <section id="header">
             <a href="{% url 'home' %}"><img src="{% static 'img/logo1.png' %}" class="logo" alt="logo"></a>
             <div class="BDR">
-                <input type="search" placeholder="Entrer votre email">
-                <button class="btn-recherche"><i class="fal fa-search"></i></button>
+                <form class="BDR" action="{% url 'search' %}">
+                    <input type="search" placeholder="Rechercher" name="keyword">
+                    <button type="submit" class="btn-recherche"><i class="fal fa-search"></i></button>
+                </form>
             </div>
             
             <div >
@@ -14,20 +16,27 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html">A propos de nous</a></li>
-                    <li id="shopsupp" class="cart-icon"><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                    <div class="cart_count">
+                        <span> {{cart_count}} </span>
+                        <li id="shopsupp" class="cart-icon"><a href="{% url 'cart' %}"><i class="fa fa-shopping-bag"></i></a></li>
+                    </div>
                     <a href="#" id="fermer"><i class="fas fa-times"></i></a>
                 </ul>
 
             </div>
             <div id="mobile">
-                <a href="cart.html"><i class="fa fa-shopping-bag"></i></a>
+                <div class="cart_count">
+                    <span>{{cart_count}}</span>
+                    <a href="{% url 'cart' %}"><i class="fa fa-shopping-bag"></i></a>
+                </div>
                 <i id="bar" class="fas fa-outdent"> </i>
             </div>
         </section>
 
         <section id="BDR">
-            <div class="BDR">
-                <input type="search" placeholder="Entrer votre email">
-                <button class="btn-recherche"><i class="fal fa-search"></i></button>
-            </div>
+                <form class="BDR" action="{% url 'search' %}" method="GET">
+                    <input type="search" placeholder="Rechercher" name="keyword">
+                    <button type="submit" class="btn-recherche"><i class="fal fa-search"></i></button>
+                </form>
+
         </section>

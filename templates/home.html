@@ -41,7 +41,7 @@
                         </div>
                         <h4 class="prix"> {{product.price}} FCFA </h4>
                     </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                    <a href="{% url 'add_cart' product.id %}"><i class="fal fa-shopping-cart cart"></i></a>
                     </a>
                 </div>
             {% endfor %}

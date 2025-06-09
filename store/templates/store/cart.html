@@ -9,6 +9,12 @@
         </section>
 
         <section id="cart" class="section-p1">
+            {% if not cart_items %}
+            <div id="mes_empty_cart">
+                <h3>VOTRE PANIER EST VIDE !</h3>
+                <a href="{% url 'store' %}"><button class="normal">Retourner à la Boutique</button></a>
+            </div>
+            {% else %}
             <table width="100%">
                 <thead>
                     <tr>
@@ -24,18 +30,44 @@
                     {% for cart_item in cart_items %}
 
                     <tr>
-                        <td><a href="#"><i class="far fa-times-circle"></i></a></td>
-                        <td><a href="{{ cart_item.product.get_url }}"><img src=" {{ cart_item.product.images.url }} " alt=""></a></td>
-                        <td>{{ cart_item.product.product_name }}</td>
+                        <td><a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" onclick="return confirm('Etes vous sur de bien vouloir supprimer ce produit de votre panier ?')" style="border: 1px solid #03534e61; border-radius: 4px; padding: 10px;"><i class="far fa-times-circle"></i></a></td>
+
+                        <td  class="cart_item_choice">
+                            <a style=" display: flex; align-items: center; justify-content: center;" href="{{ cart_item.product.get_url }}">
+                                <img style="margin-right: 1px;" src=" {{ cart_item.product.images.url }} " alt="">
+                                <span style="text-align: start; font-size: 12px; color: rgba(0, 0, 0, 0.558); line-height: 2; background-color: #00141307; padding: 11px 3px;">
+                                    {% if cart_item.variations.all %}
+                                        {% for item in cart_item.variations.all %}
+                                            {{ item.variation_category | capfirst }}: {{ item.variation_value | capfirst }}
+                                        <br />
+                                        {% endfor %}
+									{% endif %}
+                                </span>
+                            </a>
+                        </td>
+                        <td> <a href="{{ cart_item.product.get_url }}">{{ cart_item.product.product_name }}</a> </td>
                         <td>{{ cart_item.product.price }} Fcfa</td>
-                        <td><input type="number" value="{{ cart_item.quantity }}"></td>
-                        <td>{{ cart_item.total }} Fcfa</td>
+                        <td>
+                            <div class="wrapper" style=" font-size: 20px; padding: 2px; margin: 0 40px; color: #fff; border: 1px solid #03534e61; border-radius: 4px; display: flex; justify-content: space-between;">
+                                <a style="text-decoration: none; color: #fff; font-size: 20px; margin-top: 5px;" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}"><span style="background-color: #07756e44; padding: 5px 8px;  border-radius: 6px ; cursor: pointer;" class="minus">-</span></a>
+                                <span style=" color: black; padding: 8px; font-size: 14px; font-weight: 500;" class="number">{{ cart_item.quantity }}</span>
+                                <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    {% for item in cart_item.variations.all %}
+                                    <input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst}}">
+                                    {% endfor %}
+                                    <button type="submit" style="text-decoration: none; color: #fff; font-size: 20px; margin-top: 5px;"><span style="background-color: #01837a; padding: 5px 8px; border-radius: 6px; cursor: pointer;" class="plus">+</span></button>
+                                </form>
+                            </div>
+                        </td>
+                        <td>{{ cart_item.sub_total_product }} Fcfa</td>
                     </tr>
 
                     {% endfor %}
 
                 </tbody>
             </table>
+            
 
         </section>
 
@@ -49,22 +81,23 @@
                 <table>
                     <tr>
                         <td> Sous Total </td>
-                        <td>40000 Fcfa</td>
+                        <td>{{total}} fcfa</td>
                     </tr>
                     <tr>
                         <td> Livraison </td>
-                        <td>Gratuit</td>
+                        <td>{{tax}}</td>
                     </tr>
                     <tr>
                         <td> <strong>TOTAL</strong></td>
-                        <td><strong>950000 Fcfa</strong></td>
+                        <td><strong>{{grand_total}} FCFA</strong></td>
                     </tr>
                 </table>
 
-                <button class="normal">Poursuivre votre achat</button>
+                <button class="normal">Je Confirme la commande</button>
+                <a href="{% url 'store' %}"><button id="cart-add_poursivre" class="normal ">Continuer votre achat</button></a>
             </div>
-            
+            {% endif %}
         </section>
-        <br><br><hr>
-
+        <br><br>
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

@@ -22,30 +22,46 @@
                     </div>
 
                 </div>
-
             </div>
-            <div class="row-texte">
-                <h5>Catégorie : {{single_product.category}}</h5>
-                <h2>{{ single_product.product_name }}</h2>
-                <h4 class="prix"> {{single_product.price}} FCFA </h4>
-                <select name="" id="">
-                    <option> Selectionnez votre choix</option>
-                    <option> XL</option>
-                    <option> S</option>
-                    <option> L</option>
-                    <option> XXL</option>
-                    <option> M</option>
-                </select>
-                <input type="number" value="1">
+            <form class="row-texte" action="{% url 'add_cart' single_product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="row-texte">
+                    <h5>Catégorie : {{single_product.category}}</h5>
+                    <h2>{{ single_product.product_name }}</h2>
+                    <h4 class="prix"> {{single_product.price}} FCFA </h4>
+                    <div class="cart_choice">
+                        <select name="size" id="" required>
+                            <option value="" disabled selected>Taille</option>
+                            {% for i in single_product.variation_set.sizes %}
+                                <option value="{{i.variation_value | lower }}">{{i.variation_value | capfirst }}</option>
+                            {% endfor %}
+                    </select>
+                    <select name="color" id="" required>
+                        <option value="" disabled selected>Couleur</option>
+                        {% for i in single_product.variation_set.colors %}
+                            <option value="{{i.variation_value | lower}}"> {{i.variation_value | capfirst }}</option>
+                        {% endfor %}
 
-                {% if single_product.stock <= 0 %}
-                  <h6>Produit indisponible</h6>
-                  {% else %}
-                    <a href="{% url 'add_cart' single_product.id %}"><button class="normal">Ajouter au panier</button></a>
-                {% endif %}
-                <h4>Description</h4>
-                <span>{{ single_product.description }}</span>
-            </div>
+                    </select>
+                    </div>
+
+                    <input type="number" value="1">
+
+                    {% if single_product.stock <= 0 %}
+                    <h6>Produit indisponible</h6>
+                    {% else %}
+
+                    {% if in_cart %}
+                        <a class="in_cart_btn" href="#"><button class="normal">Ajouté <i class="fas fa-check"></i></button></a>
+                        <a href="{% url 'cart' %}"><button class="normal">voir <i class="fas fa-eye"></i></button></a>
+                    {% else %}
+                        <button type="submit" class="normal">Ajouter au panier</button>
+                        {% endif %}
+                    {% endif %}
+                    <h4>Description</h4>
+                    <span>{{ single_product.description }}</span>
+                </div>
+            </form>
         </section> <br> <br> <br>
 
         <section id="P1" class="section-p1">
