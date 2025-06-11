@@ -1,0 +1,218 @@
+
+
+
+
+#page-login{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: #f2f2f2;
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+
+
+::selection{
+  background: #4158d0;
+  color: #fff;
+}
+.wrapper-log{
+  width: 50%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.wrapper-log .title{
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #52b2d5, #0f6a98);
+}
+
+
+.wrapper-log form{
+  padding: 10px 30px 50px 30px;
+}
+
+
+.wrapper-log form #field-min{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.wrapper-log form #field-min .field{
+    width: 49%;
+}
+
+.wrapper-log form .min-field-inline .field{
+    width: 49%;
+}
+
+
+
+.wrapper-log form .field{
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+
+.wrapper-log form .field input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+.wrapper-log form .field input:focus,
+form .field input:valid{
+  border-color: #0f6a98;
+}
+.wrapper-log form .field label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color:  #527ad5;
+  background: #fff;
+  transform: translateY(-50%);
+}
+form .login-content{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+form .login-content .checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form .login-content input{
+  width: 15px;
+  height: 15px;
+  background: red;
+}
+form .login-content label{
+  color: #262626;
+  user-select: none;
+  padding-left: 5px;
+}
+form .login-content .pass-link{
+  color: "";
+}
+form .field input[type="submit"]{
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(-135deg,  #52b2d5, #0f6a98);
+  transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+  transform: scale(0.95);
+}
+form .signup-link{
+  color: #262626;
+  margin-top: 20px;
+  text-align: center;
+}
+form .pass-link a,
+form .signup-link a{
+  color: #4158d0;
+  text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+  text-decoration: underline;
+}
+
+
+
+/* responsive */
+
+
+/* ecran inferieur a 1040px */
+
+@media (max-width: 1040px){
+.wrapper-log{
+  width: 80%;
+  
+}
+
+}
+
+/* ecran inferieur a 780px */
+
+@media (max-width: 780px){
+.wrapper-log{
+  width: 90%;
+  
+}
+.wrapper-log form .field input{
+  font-size: 14px;
+}
+
+.wrapper-log .title{
+  font-size: 25px;
+  
+}
+
+
+
+form .login-content label{
+  font-size: 15px;
+}
+}
+
+/* ecran inferieur a 375px */
+
+@media (max-width: 375px){
+
+.wrapper-log form .field input{
+  font-size: 12px;
+}
+
+.wrapper-log .title{
+  font-size: 22px;
+  
+}
+
+
+
+form .login-content label{
+  font-size: 12px;
+}
+}
+
+
+

@@ -15,7 +15,18 @@
                     <li><a href="{% url 'store' %}">Boutique</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">A propos de nous</a></li>
+                    <li><a href="about.html">A propos</a></li>
+                    {% if user.id is None %}
+                    <li >
+                        <a style="color: #ffff; background:  linear-gradient(-135deg,  #52b2d5, #0f6a98); border-radius: 15px; padding: 12px;" href="{% url 'login' %}">Se connecter</a>
+                    </li>
+                    {% else %}
+                    <li >
+                        <a href="{% url 'logout' %}">Deconnextion</a> --
+                        <a href="{% url 'dashboard' %}">Bord</a>
+                        
+                    </li>
+                    {% endif %}
                     <div class="cart_count">
                         <span> {{cart_count}} </span>
                         <li id="shopsupp" class="cart-icon"><a href="{% url 'cart' %}"><i class="fa fa-shopping-bag"></i></a></li>

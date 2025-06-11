@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section  class="section-conten padding-y bg">
+    <div style="margin-top: 30px;" class="container">
+        {% include "includes/alerts.html" %}
+        <div class="row">
+            <aside  class="col-md-3">
+                <!--   SIDEBAR   -->
+                <ul class="list-group">
+                    <a class="list-group-item active" href="#"> Historique de commandes </a>
+                    <a class="list-group-item" href="#"> Transactions </a>
+                    <a class="list-group-item" href="#"> Retour et remboursements </a>
+                    <a class="list-group-item" href="#">Paramètres </a>
+                    <a class="list-group-item" href="#"> Mes produits en vente </a>
+                    <a class="list-group-item" href="#"> Reçu des commandes </a>
+                </ul>
+                <br>
+                <a style="margin-bottom: 10px;" class="btn btn-light btn-block" href="{% url 'logout' %}"> <i class="fa fa-power-off"></i> <span class="text"> Déconnection</span> </a>
+                <!--   SIDEBAR .//END   -->
+            </aside>
+            <main class="col-md-9">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">ID de la Commande: 6123456789</strong>
+                        <span>Date de la Commande: 16 Septembre 2024</span>
+                    </header>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="text-muted">Livrer à</h6>
+                                <p style="color: #4a4a4a;" >Cheikh Moustapha Mbacke <br>
+                                    Téléphone: +1234567890 Email: moustaphasidymbacke@gmail.com <br>
+                                    Emplacement: Home number, Building name, Street 123, Tashkent, UZB <br>
+                                    P.O. Box: 100123
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-muted">Paiement</h6>
+                                <span class="text-success">
+                                    <i class="fab fa-lg fa-cc-visa"></i>
+                                    Visa **** 4216
+                                </span>
+                                <p style="color: #535353;">Total: 25000Fcfa <br>
+                                    Fraits d'expédition: 1500Fcfa <br>
+                                    <span class="b">Total: 26500Fcfa </span>
+                                </p>
+                            </div>
+                        </div> <!-- row.// -->
+                    </div> <!-- card-body .// -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <td width="65">
+                                    <img src="static/images/items/1.jpg" class="img-xs border">
+                                </td>
+                                <td>
+                                    <p style="color: #343434;" class="title mb-0">Le nom du Produit </p>
+                                    <var class="price text-muted">10000 Fcfa</var>
+                                </td>
+                                <td> Vendeur <br> Bakh Yaye </td>
+                                <td width="250"> <a href="#" class="btn btn-outline-primary">Suivi de commande</a> <a href="#"
+                                        class="btn btn-light"> Details </a> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="static/images/items/2.jpg" class="img-xs border">
+                                </td>
+                                <td>
+                                    <p class="title mb-0">Le Nom d'un autre produit </p>
+                                    <var class="price text-muted">5000 Fcfa</var>
+                                </td>
+                                <td> Vendeur <br> Ci Shop </td>
+                                <td> <a href="#" class="btn btn-outline-primary">Suivi de Commande</a> <a href="#"
+                                        class="btn btn-light"> Details </a> </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../images/items/3.jpg" class="img-xs border">
+                                </td>
+                                <td>
+                                    <p class="title mb-0">Un autre nom de produit </p>
+                                    <var class="price text-muted">10000 Fcfa</var>
+                                </td>
+                                <td> Vendeur <br> Mubachir </td>
+                                <td> <a href="#" class="btn btn-outline-primary">Suivi de Commande</a> <a href="#"
+                                        class="btn btn-light"> Details </a> </td>
+                            </tr>
+                        </table>
+                    </div> <!-- table-responsive .end// -->
+                </article> <!-- order-group.// -->
+            </main>
+        </div> <!-- row.// -->
+    </div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

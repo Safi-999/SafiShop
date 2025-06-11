@@ -1,0 +1,69 @@
+ {% extends 'base.html' %}
+
+        {% load static %}
+        
+
+
+        {% block content %}
+
+
+<section id="page-login">
+    
+    <div class="wrapper-log">
+            <div class="title">
+                Création de compte safi
+            </div>
+            {% include 'includes/alerts.html' %}
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+
+                <div id="field-min">
+                    <div  class="field">
+                        {{ form.first_name}}
+                        <label>Votre Prénom</label>
+                    </div>
+                    <div class="field">
+                        {{ form.last_name}}
+                        <label>Votre Nom</label>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    {{ form.email}}
+                    <label>Votre Adresse Email</label>
+                </div>
+                <div class="min-field-inline">
+                    <div class="field">
+                        {{ form.phone_number}}
+                        <label>Votre Numéro de téléphone</label>
+                    </div>
+                </div>
+                <div class="field">
+                    {{ form.password}}
+                    <label>Votre Mot de passe</label>
+                </div>
+                <div class="field">
+                    {{ form.confirm_password }}
+                    <label>Confirmez votre Mot de passe</label>
+                </div>
+                <div class="login-content">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Se souvenir de moi</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Creation de compte">
+                </div>
+                <div class="signup-link">
+                    Déjà de compte ? <a href="{% url 'login' %}">Se connecter</a>
+                </div>
+                {{ form.email.errors }}
+                {{ form.non_field_errors }}
+            </form>
+        </div>
+    </body>
+    </html>
+</section>
+{% endblock %}
+

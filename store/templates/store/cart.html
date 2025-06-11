@@ -48,16 +48,16 @@
                         <td> <a href="{{ cart_item.product.get_url }}">{{ cart_item.product.product_name }}</a> </td>
                         <td>{{ cart_item.product.price }} Fcfa</td>
                         <td>
-                            <div class="wrapper" style=" font-size: 20px; padding: 2px; margin: 0 40px; color: #fff; border: 1px solid #03534e61; border-radius: 4px; display: flex; justify-content: space-between;">
-                                <a style="text-decoration: none; color: #fff; font-size: 20px; margin-top: 5px;" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}"><span style="background-color: #07756e44; padding: 5px 8px;  border-radius: 6px ; cursor: pointer;" class="minus">-</span></a>
+                            <div class="wrapper">
+                                <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}"><span class="minus">-</span></a>
                                 <span style=" color: black; padding: 8px; font-size: 14px; font-weight: 500;" class="number">{{ cart_item.quantity }}</span>
-                                <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
-                                    {% csrf_token %}
-                                    {% for item in cart_item.variations.all %}
-                                    <input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst}}">
+                            <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                {% csrf_token %}
+                                {% for item in cart_item.variations.all %}
+                                <input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst}}">
                                     {% endfor %}
-                                    <button type="submit" style="text-decoration: none; color: #fff; font-size: 20px; margin-top: 5px;"><span style="background-color: #01837a; padding: 5px 8px; border-radius: 6px; cursor: pointer;" class="plus">+</span></button>
-                                </form>
+                                <button type="submit" style=" color: #fff; font-size: 20px; margin-top: 2px;"><span style="background-color: #01837a; padding: 5px 8px; border-radius: 6px; cursor: pointer; border: none;" class="plus">+</span></button>
+                            </form>
                             </div>
                         </td>
                         <td>{{ cart_item.sub_total_product }} Fcfa</td>

@@ -1298,6 +1298,34 @@ footer .col a{
   text-align: center;
 }
 
+.wrapper{
+  display: flex; 
+  justify-content: space-between;
+  font-size: 20px; 
+  padding: 2px; 
+  margin: 0 40px; 
+  color: #fff; 
+  border: 1px solid #03534e61; 
+  border-radius: 4px; 
+  
+}
+
+.wrapper a{
+  text-decoration: none; 
+  color: #fff; 
+
+  margin: 5px 5px 0 1px;
+  
+}
+
+.wrapper a span{
+  font-size: 20px;
+  background-color: #07756e44; 
+  padding: 5px 8px;  
+  border-radius: 6px ; 
+  cursor: pointer;
+  
+}
 
 #cart-add{
   display: flex;

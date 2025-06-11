@@ -1,0 +1,59 @@
+ {% extends 'base.html' %}
+
+        {% load static %}
+        
+
+
+        {% block content %}
+
+
+<section id="page-login">
+
+{% if request.GET.command == 'verification' %}
+    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px; margin-bottom:100px;">
+    Votre compte a été crée avec succès ! Pour l'activer, nous vous avons envoyé un mail à votre adresse [{{ request.GET.email }}]
+    <br><br>
+    Déjà vérifié ? <a href="{% url 'login' %}">Connectez vous Maintenant</a>
+    </div><br><br><br>
+
+{% else %}
+    <div class="wrapper-log">
+            <div class="title">
+                Connexion
+            </div>
+            {% include 'includes/alerts.html' %}
+            <form action="{% url 'login' %}" method="POST">
+
+                {% csrf_token %}
+
+                <div class="field">
+                <input type="email" required name="email">
+                <label>Adresse Email</label>
+                </div>
+                <div class="field">
+                <input type="password" required name="password">
+                <label>Mot de passe</label>
+                </div>
+                <div class="login-content">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">se souvenir de moi</label>
+                    </div>
+                    <div class="pass-link">
+                        <a href="{% url 'forgotPassword' %}">Oublié?</a>
+                    </div>
+                </div>
+                <div class="field">
+                <input type="submit" value="Connecter">
+                </div>
+                <div class="signup-link">
+                    Pas encore de compte? <a href="{% url 'register' %}">Créer un compte</a>
+                </div>
+            </form>
+        </div>
+
+{% endif %}
+    </body>
+    </html>
+</section>
+{% endblock %}

@@ -1,5 +1,6 @@
 // Script for navigation bar
 
+
 const bar = document.getElementById('bar')
 const fermer = document.getElementById('fermer')
 const nav = document.getElementById('navbar')
@@ -15,3 +16,9 @@ if (fermer){
         nav.classList.remove('active');
     })
 }
+
+
+
+setTimeout(() => {
+	$("#alert-messages").fadeOut("slow");
+}, 4000);

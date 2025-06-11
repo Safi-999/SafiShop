@@ -1,0 +1,10 @@
+
+{% autoescape off %}
+
+Salut {{user.first_name}},
+S'il vous plait, cliquez sur ce lien pour activer votre compte Safi.
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+Si vous pensez que ce n'était pas vous, ignorez ce email SVP.
+
+{% endautoescape %}

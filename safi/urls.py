@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('boutique/', include('store.urls')),
     path('carts/', include('carts.urls')),
+    path('accounts/', include('accounts.urls')),
 
 
 
